@@ -1,8 +1,8 @@
 #include "libft/libft.h"
 
-static int ft_getlen(long num)
+static int	ft_getlen(long num)
 {
-	int len;
+	int	len;
 
 	if (num == 0)
 		return (1);
@@ -17,11 +17,11 @@ static int ft_getlen(long num)
 	return (len);
 }
 
-char *ft_u_itoa(unsigned int n)
+char	*ft_u_itoa(unsigned int n)
 {
-	int   signe;
-	int   len;
-	char *str;
+	int		signe;
+	int		len;
+	char	*str;
 
 	signe = 1;
 	len = ft_getlen(n);

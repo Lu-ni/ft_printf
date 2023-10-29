@@ -1,37 +1,38 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-char *intToHex(int num)
+char	*intToHex(int num)
 {
-	char *hexDigits = "0123456789ABCDEF";
-	char *hexString = malloc(9); // 8 characters for hex + 1 for '\0'
-	int   i = 0;
+	char			*hexdigits;
+	int				i;
+	char			*hexstring;
+	unsigned int	n;
+	int				index;
 
-	// Handle zero explicitly to simplify the loop
+	hexdigits = "0123456789ABCDEF";
+	hexstring = malloc(9);
+	i = 0;
 	if (num == 0)
 	{
-		hexString[0] = '0';
-		hexString[1] = '\0';
-		return hexString;
+		hexstring[0] = '0';
+		hexstring[1] = '\0';
+		return (hexstring);
 	}
-
-	unsigned int n = (unsigned int) num; // Use unsigned int for negative numbers
-
+	n = (unsigned int)num;
 	for (i = 0; i < 8; i++)
 	{
-		int index = n & 0xF; // Get the last 4 bits (one hex digit)
-		hexString[7 - i] = hexDigits[index];
-		n >>= 4; // Shift right by 4 bits to get the next digit
+		index = n & 0xF;
+		hexstring[7 - i] = hexdigits[index];
+		n >>= 4;
 	}
-
-	hexString[8] = '\0';
-
-	return hexString;
+	hexstring[8] = '\0';
+	return (hexstring);
 }
 
-char *ft_hextolowe(char *str)
+char	*ft_hextolowe(char *str)
 {
-	char *strstart;
+	char	*strstart;
+
 	strstart = str;
 	while (*str)
 	{
@@ -41,30 +42,30 @@ char *ft_hextolowe(char *str)
 	return (strstart);
 }
 
-char *longToHex(long num)
+char	*longToHex(long num)
 {
-	char *hexDigits = "0123456789ABCDEF";
-	char *hexString = malloc(17); // 16 characters for hex + 1 for '\0'
-	int   i = 0;
+	char			*hexdigits;
+	int				i;
+	char			*hexstring;
+	unsigned long	n;
+	int				index;
 
-	// Handle zero explicitly to simplify the loop
+	hexdigits = "0123456789ABCDEF";
+	hexstring = malloc(17);
+	i = 0;
 	if (num == 0)
 	{
-		hexString[0] = '0';
-		hexString[1] = '\0';
-		return hexString;
+		hexstring[0] = '0';
+		hexstring[1] = '\0';
+		return (hexstring);
 	}
-
-	unsigned long n = (unsigned long) num; // Use unsigned long for negative numbers
-
+	n = (unsigned long)num;
 	for (i = 0; i < 16; i++)
 	{
-		int index = n & 0xF; // Get the last 4 bits (one hex digit)
-		hexString[15 - i] = hexDigits[index];
-		n >>= 4; // Shift right by 4 bits to get the next digit
+		index = n & 0xF;
+		hexstring[15 - i] = hexdigits[index];
+		n >>= 4;
 	}
-
-	hexString[16] = '\0';
-
-	return hexString;
+	hexstring[16] = '\0';
+	return (hexstring);
 }

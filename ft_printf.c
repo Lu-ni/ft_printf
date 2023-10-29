@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int print_p(va_list *ap, int *count)
+int	print_p(va_list *ap, int *count)
 {
-	char  prefix[3];
-	char *str;
-	int   i;
+	char	prefix[3];
+	char	*str;
+	int		i;
 
 	i = 0;
 	prefix[0] = '0';
@@ -29,33 +29,33 @@ int print_p(va_list *ap, int *count)
 	free(str);
 	return (0);
 }
-int print_u(va_list *ap, int *count)
+int	print_u(va_list *ap, int *count)
 {
-	char *str;
+	char	*str;
 
 	str = ft_u_itoa(va_arg(*ap, unsigned int));
 	if (!str)
-		return 1;
+		return (1);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
 	free(str);
 	return (0);
 }
-int print_c(va_list *ap, int *count)
+int	print_c(va_list *ap, int *count)
 {
 	ft_putchar_fd(va_arg(*ap, int), 1);
 	*count += 1;
 	return (0);
 }
-int print_x(va_list *ap, int *count)
+int	print_x(va_list *ap, int *count)
 {
-	char *str;
-	int   i;
+	char	*str;
+	int		i;
 
 	i = 0;
 	str = ft_hextolowe(intToHex(va_arg(*ap, int)));
 	if (!str)
-		return 1;
+		return (1);
 	while (str[i] == '0')
 		i++;
 	if (str[i] == '\0')
@@ -65,15 +65,15 @@ int print_x(va_list *ap, int *count)
 	free(str);
 	return (0);
 }
-int print_X(va_list *ap, int *count)
+int	print_X(va_list *ap, int *count)
 {
-	char *str;
-	int   i;
+	char	*str;
+	int		i;
 
 	i = 0;
 	str = intToHex(va_arg(*ap, int));
 	if (!str)
-		return 1;
+		return (1);
 	while (str[i] == '0')
 		i++;
 	if (str[i] == '\0')
@@ -84,11 +84,11 @@ int print_X(va_list *ap, int *count)
 	return (0);
 }
 
-int print_s(va_list *ap, int *count)
+int	print_s(va_list *ap, int *count)
 {
-	char *str;
+	char	*str;
 
-	str = (char *) va_arg(*ap, const char *);
+	str = (char *)va_arg(*ap, const char *);
 	if (str)
 	{
 		ft_putstr_fd(str, 1);
@@ -102,25 +102,27 @@ int print_s(va_list *ap, int *count)
 	return (0);
 }
 
-int print_i(va_list *ap, int *count)
+int	print_i(va_list *ap, int *count)
 {
-	char *str;
+	char	*str;
 
 	str = ft_itoa(va_arg(*ap, int));
 	if (!str)
-		return 1;
+		return (1);
 	ft_putstr_fd(str, 1);
 	*count += ft_strlen(str);
 	free(str);
 	return (0);
 }
-int ft_printf(const char *args, ...)
+int	ft_printf(const char *args, ...)
 {
-	va_list ap;
-	char   *ola = ft_strdup(args);
-	char   *olastart = ola;
-	int     count;
+	va_list	ap;
+	char	*ola;
+	char	*olastart;
+	int		count;
 
+	ola = ft_strdup(args);
+	olastart = ola;
 	count = 0;
 	va_start(ap, args);
 	while (*ola)
@@ -161,5 +163,5 @@ int ft_printf(const char *args, ...)
 	}
 	va_end(ap);
 	free(olastart);
-	return count;
+	return (count);
 }

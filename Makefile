@@ -1,25 +1,31 @@
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wextra -Werror -Wall -c
-SRC = ft_printf.c hexadecimal_tools.c
-OBJ = libft/libft.a $(SRC:.c=.o) 
+SRC = ft_printf.c hexadecimal_tools.c ft_u_itoa.c
+OBJ = $(SRC:.c=.o)
+LIBFT = libft/libft.a
 
-libft/libft.a :
+all: $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT)
+	# Extract object files from libft.a
+	ar -x $(LIBFT)
+	# Create libftprintf.a including those object files
+	ar -rcs $(NAME) $(OBJ) *.o
+	# Optionally, remove extracted object files to clean up
+	rm -f *.o "__.SYMDEF SORTED"
+
+$(OBJ): $(SRC)
+	$(CC) $(CFLAGS) $(SRC)
+
+$(LIBFT):
 	cd libft && make bonus && cd ../
-$(NAME) : all
-all: $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+
 clean:
 	rm -f $(OBJ)
+
 fclean: clean
 	rm -f $(NAME)
-re : fclean all
 
+re: fclean all
 
-
-
-
-
-test :
-	cd libft && make bonus && cd ../
-	cp libft/libft.a .

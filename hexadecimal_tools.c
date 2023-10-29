@@ -15,21 +15,16 @@ char *intToHex(int num)
 		return hexString;
 	}
 
-	while (num > 0)
-	{
-		int remainder = num % 16;
-		hexString[i++] = hexDigits[remainder];
-		num /= 16;
-	}
-	hexString[i] = '\0';
+	unsigned int n = (unsigned int) num; // Use unsigned int for negative numbers
 
-	// Reverse the string
-	for (int start = 0, end = i - 1; start < end; start++, end--)
+	for (i = 0; i < 8; i++)
 	{
-		char temp = hexString[start];
-		hexString[start] = hexString[end];
-		hexString[end] = temp;
+		int index = n & 0xF; // Get the last 4 bits (one hex digit)
+		hexString[7 - i] = hexDigits[index];
+		n >>= 4; // Shift right by 4 bits to get the next digit
 	}
+
+	hexString[8] = '\0';
 
 	return hexString;
 }
@@ -60,21 +55,16 @@ char *longToHex(long num)
 		return hexString;
 	}
 
-	while (num > 0)
-	{
-		long remainder = num % 16;
-		hexString[i++] = hexDigits[remainder];
-		num /= 16;
-	}
-	hexString[i] = '\0';
+	unsigned long n = (unsigned long) num; // Use unsigned long for negative numbers
 
-	// Reverse the string
-	for (int start = 0, end = i - 1; start < end; start++, end--)
+	for (i = 0; i < 16; i++)
 	{
-		char temp = hexString[start];
-		hexString[start] = hexString[end];
-		hexString[end] = temp;
+		int index = n & 0xF; // Get the last 4 bits (one hex digit)
+		hexString[15 - i] = hexDigits[index];
+		n >>= 4; // Shift right by 4 bits to get the next digit
 	}
+
+	hexString[16] = '\0';
 
 	return hexString;
 }

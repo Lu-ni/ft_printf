@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_u_itoa.h"
 #include "ft_printf.h"
+#include "ft_u_itoa.h"
 #include "libft/libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>

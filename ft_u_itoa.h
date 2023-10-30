@@ -6,10 +6,12 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:01:48 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 18:01:51 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:04:06 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_U_ITOA
+#ifndef FT_U_ITOA_H
+# define FT_U_ITOA_H
+
 char	*ft_u_itoa(unsigned int n);
 #endif

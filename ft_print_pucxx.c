@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:05:08 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 18:53:24 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:00:07 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	print_p(va_list *ap, int *count)
 	free(str);
 	return (0);
 }
+
 int	print_u(va_list *ap, int *count)
 {
 	char	*str;
@@ -47,12 +48,14 @@ int	print_u(va_list *ap, int *count)
 	free(str);
 	return (0);
 }
+
 int	print_c(va_list *ap, int *count)
 {
 	ft_putchar_fd(va_arg(*ap, int), 1);
 	*count += 1;
 	return (0);
 }
+
 int	print_x(va_list *ap, int *count)
 {
 	char	*str;

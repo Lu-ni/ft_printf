@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:01:57 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 19:13:03 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:43:25 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ char	*int2hex(int num)
 
 	hexdigits = "0123456789ABCDEF";
 	hexstring = malloc(9);
-	i = 0;
-	if (num == 0)
-	{
-		hexstring[0] = '0';
-		hexstring[1] = '\0';
+	if (!hexstring)
 		return (hexstring);
-	}
+	i = 0;
+	hexstring[0] = '0';
+	hexstring[1] = '\0';
+	if (num == 0)
+		return (hexstring);
 	n = (unsigned int)num;
-	for (i = 0; i < 8; i++)
+	while (i < 8)
 	{
 		index = n & 0xF;
-		hexstring[7 - i] = hexdigits[index];
+		hexstring[7 - i++] = hexdigits[index];
 		n >>= 4;
 	}
 	hexstring[8] = '\0';
@@ -64,18 +64,18 @@ char	*long2hex(long num)
 
 	hexdigits = "0123456789ABCDEF";
 	hexstring = malloc(17);
-	i = 0;
-	if (num == 0)
-	{
-		hexstring[0] = '0';
-		hexstring[1] = '\0';
+	if (!hexstring)
 		return (hexstring);
-	}
+	i = 0;
+	hexstring[0] = '0';
+	hexstring[1] = '\0';
+	if (num == 0)
+		return (hexstring);
 	n = (unsigned long)num;
-	for (i = 0; i < 16; i++)
+	while (i < 16)
 	{
 		index = n & 0xF;
-		hexstring[15 - i] = hexdigits[index];
+		hexstring[15 - i++] = hexdigits[index];
 		n >>= 4;
 	}
 	hexstring[16] = '\0';

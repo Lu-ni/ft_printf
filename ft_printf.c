@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:04:06 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 19:12:29 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:45:42 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,51 +52,51 @@ int	print_i(va_list *ap, int *count)
 int	ft_printf(const char *args, ...)
 {
 	va_list	ap;
-	char	*ola;
-	char	*olastart;
+	char	*str;
+	char	*strstart;
 	int		count;
 
-	ola = ft_strdup(args);
-	olastart = ola;
+	str = ft_strdup(args);
+	strstart = str;
 	count = 0;
 	va_start(ap, args);
-	while (*ola)
+	while (*str)
 	{
-		if (*ola == '%')
+		if (*str == '%')
 		{
-			if (*(ola + 1) == '\0')
-				return (0); // a modifier car ca ne return pas la bonne valeur
-			if (*(ola + 1) == 'c')
+			if (*(str + 1) == '\0')
+				return (-1);
+			if (*(str + 1) == 'c')
 				print_c(&ap, &count);
-			else if (*(ola + 1) == 's')
+			else if (*(str + 1) == 's')
 				print_s(&ap, &count);
-			else if (*(ola + 1) == 'p')
+			else if (*(str + 1) == 'p')
 				print_p(&ap, &count);
-			else if (*(ola + 1) == 'd')
+			else if (*(str + 1) == 'd')
 				print_i(&ap, &count);
-			else if (*(ola + 1) == 'i')
+			else if (*(str + 1) == 'i')
 				print_i(&ap, &count);
-			else if (*(ola + 1) == 'u')
+			else if (*(str + 1) == 'u')
 				print_u(&ap, &count);
-			else if (*(ola + 1) == 'x')
+			else if (*(str + 1) == 'x')
 				print_x(&ap, &count);
-			else if (*(ola + 1) == 'X')
+			else if (*(str + 1) == 'X')
 				print_xbig(&ap, &count);
-			else if (*(ola + 1) == '%')
+			else if (*(str + 1) == '%')
 			{
 				ft_putchar_fd('%', 1);
 				count++;
 			}
-			ola++;
+			str++;
 		}
 		else
 		{
 			count++;
-			ft_putchar_fd(*ola, 1);
+			ft_putchar_fd(*str, 1);
 		}
-		ola++;
+		str++;
 	}
 	va_end(ap);
-	free(olastart);
+	free(strstart);
 	return (count);
 }

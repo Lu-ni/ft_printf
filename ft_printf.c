@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:04:06 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 19:53:17 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:25:52 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,32 @@ int	print_i(va_list *ap, int *count)
 	return (0);
 }
 
-int print_any(char *str, va_list *ap, int *count)
+int	print_any(char *str, va_list *ap, int *count)
 {
-			if (*(str + 1) == '\0')
-				return (1);
-			if (*(str + 1) == 'c')
-				print_c(ap, count);
-			else if (*(str + 1) == 's')
-				print_s(ap, count);
-			else if (*(str + 1) == 'p')
-				print_p(ap, count);
-			else if (*(str + 1) == 'd')
-				print_i(ap, count);
-			else if (*(str + 1) == 'i')
-				print_i(ap, count);
-			else if (*(str + 1) == 'u')
-				print_u(ap, count);
-			else if (*(str + 1) == 'x')
-				print_x(ap, count);
-			else if (*(str + 1) == 'X')
-				print_xbig(ap, count);
-			else if (*(str + 1) == '%')
-			{
-				ft_putchar_fd('%', 1);
-				*count += 1;
-			}
-			return (0);
+	if (*(str + 1) == '\0')
+		return (1);
+	if (*(str + 1) == 'c')
+		print_c(ap, count);
+	else if (*(str + 1) == 's')
+		print_s(ap, count);
+	else if (*(str + 1) == 'p')
+		print_p(ap, count);
+	else if (*(str + 1) == 'd')
+		print_i(ap, count);
+	else if (*(str + 1) == 'i')
+		print_i(ap, count);
+	else if (*(str + 1) == 'u')
+		print_u(ap, count);
+	else if (*(str + 1) == 'x')
+		print_x(ap, count);
+	else if (*(str + 1) == 'X')
+		print_xbig(ap, count);
+	else if (*(str + 1) == '%')
+	{
+		ft_putchar_fd('%', 1);
+		*count += 1;
+	}
+	return (0);
 }
 
 int	ft_printf(const char *args, ...)
@@ -93,9 +93,8 @@ int	ft_printf(const char *args, ...)
 	{
 		if (*str == '%')
 		{
-			if (print_any(str, &ap, &count))
+			if (print_any(str++, &ap, &count))
 				return (-1);
-			str++;
 		}
 		else
 		{

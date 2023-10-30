@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:04:06 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 18:49:39 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:12:29 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	print_i(va_list *ap, int *count)
 	free(str);
 	return (0);
 }
+
 int	ft_printf(const char *args, ...)
 {
 	va_list	ap;
@@ -80,7 +81,7 @@ int	ft_printf(const char *args, ...)
 			else if (*(ola + 1) == 'x')
 				print_x(&ap, &count);
 			else if (*(ola + 1) == 'X')
-				print_X(&ap, &count);
+				print_xbig(&ap, &count);
 			else if (*(ola + 1) == '%')
 			{
 				ft_putchar_fd('%', 1);

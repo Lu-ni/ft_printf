@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:05:08 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 19:00:07 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:11:29 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	print_p(va_list *ap, int *count)
 	prefix[0] = '0';
 	prefix[1] = 'x';
 	prefix[2] = '\0';
-	str = ft_hextolowe(longToHex(va_arg(*ap, long)));
+	str = ft_hextolowe(long2hex(va_arg(*ap, long)));
 	if (!str)
 		return (1);
 	while (str[i] == '0')
@@ -62,7 +62,7 @@ int	print_x(va_list *ap, int *count)
 	int		i;
 
 	i = 0;
-	str = ft_hextolowe(intToHex(va_arg(*ap, int)));
+	str = ft_hextolowe(int2hex(va_arg(*ap, int)));
 	if (!str)
 		return (1);
 	while (str[i] == '0')
@@ -75,13 +75,13 @@ int	print_x(va_list *ap, int *count)
 	return (0);
 }
 
-int	print_X(va_list *ap, int *count)
+int	print_xbig(va_list *ap, int *count)
 {
 	char	*str;
 	int		i;
 
 	i = 0;
-	str = intToHex(va_arg(*ap, int));
+	str = int2hex(va_arg(*ap, int));
 	if (!str)
 		return (1);
 	while (str[i] == '0')

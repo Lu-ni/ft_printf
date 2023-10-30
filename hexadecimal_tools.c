@@ -6,14 +6,14 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:01:57 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 19:00:10 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:13:03 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdlib.h>
 
-char	*intToHex(int num)
+char	*int2hex(int num)
 {
 	char			*hexdigits;
 	int				i;
@@ -54,7 +54,7 @@ char	*ft_hextolowe(char *str)
 	return (strstart);
 }
 
-char	*longToHex(long num)
+char	*long2hex(long num)
 {
 	char			*hexdigits;
 	int				i;

@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:04:06 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 20:25:52 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/30 20:39:19 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,12 @@ int	print_any(char *str, va_list *ap, int *count)
 	return (0);
 }
 
+int	print_char(char c, int fd)
+{
+	ft_putchar_fd(c, fd);
+	return (1);
+}
+
 int	ft_printf(const char *args, ...)
 {
 	va_list	ap;
@@ -85,6 +91,8 @@ int	ft_printf(const char *args, ...)
 	char	*strstart;
 	int		count;
 
+	if (*args)
+		return (0);
 	str = ft_strdup(args);
 	strstart = str;
 	count = 0;
@@ -94,13 +102,10 @@ int	ft_printf(const char *args, ...)
 		if (*str == '%')
 		{
 			if (print_any(str++, &ap, &count))
-				return (-1);
+				str = (char *) 0;
 		}
 		else
-		{
-			count++;
-			ft_putchar_fd(*str, 1);
-		}
+			count += print_char(*str, 1);
 		str++;
 	}
 	va_end(ap);

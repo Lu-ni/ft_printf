@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wextra -Werror -Wall -c
-SRC = ft_printf.c hexadecimal_tools.c ft_u_itoa.c
+SRC = ft_printf.c hexadecimal_tools.c ft_u_itoa.c ft_print_pucxx.c
 OBJ = $(SRC:.c=.o)
 LIBFT = libft/libft.a
 

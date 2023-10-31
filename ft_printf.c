@@ -6,7 +6,7 @@
 /*   By: lnicolli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:04:06 by lnicolli          #+#    #+#             */
-/*   Updated: 2023/10/30 20:39:19 by lnicolli         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:25:44 by lnicolli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <sys/_types/_va_list.h>
 
-int	print_s(va_list *ap, int *count)
+static int	print_s(va_list *ap, int *count)
 {
 	char	*str;
 
@@ -37,7 +37,7 @@ int	print_s(va_list *ap, int *count)
 	return (0);
 }
 
-int	print_i(va_list *ap, int *count)
+static int	print_i(va_list *ap, int *count)
 {
 	char	*str;
 
@@ -50,7 +50,7 @@ int	print_i(va_list *ap, int *count)
 	return (0);
 }
 
-int	print_any(char *str, va_list *ap, int *count)
+static int	print_any(char *str, va_list *ap, int *count)
 {
 	if (*(str + 1) == '\0')
 		return (1);
@@ -78,7 +78,7 @@ int	print_any(char *str, va_list *ap, int *count)
 	return (0);
 }
 
-int	print_char(char c, int fd)
+static int	print_char(char c, int fd)
 {
 	ft_putchar_fd(c, fd);
 	return (1);
@@ -91,7 +91,7 @@ int	ft_printf(const char *args, ...)
 	char	*strstart;
 	int		count;
 
-	if (*args)
+	if (!*args)
 		return (0);
 	str = ft_strdup(args);
 	strstart = str;
